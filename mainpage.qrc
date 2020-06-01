@@ -1,0 +1,16 @@
+<RCC>
+  <qresource prefix="mainpage">
+    <file>database.png</file>
+    <file>factory-stock-house.png</file>
+    <file>mechanical-gears-.png</file>
+    <file>server.png</file>
+    <file>stocks-graphic-on-laptop-monitor.png</file>
+    <file>delete-page.png</file>
+    <file>home-page.png</file>
+    <file>list.png</file>
+  </qresource>
+  <qresource prefix="icons">
+    <file>icon12.ico</file>
+    <file>transfer-data-between-documents.png</file>
+  </qresource>
+</RCC>
