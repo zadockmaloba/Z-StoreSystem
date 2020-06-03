@@ -6,11 +6,12 @@
 #include <QtSql/qsqlquerymodel.h>
 #include <QtCore/qdebug.h>
 #include <string>
+#include <QtCore/qdatetime.h>
 
 class DataBase 
 {
 public:
-	DataBase(char* path);
+	DataBase(char* path, QString conName);
 	~DataBase();
 	bool connectDB();
 	void closeDB();

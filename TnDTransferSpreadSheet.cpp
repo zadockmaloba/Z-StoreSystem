@@ -9,3 +9,15 @@ TnDTransferSpreadSheet::TnDTransferSpreadSheet(QWidget *parent)
 TnDTransferSpreadSheet::~TnDTransferSpreadSheet()
 {
 }
+void TnDTransferSpreadSheet::readData()
+{
+	trDb->connectDB();
+	QSqlQuery * qry = new QSqlQuery(trDb->zDB);
+	QSqlQueryModel* qmd = new QSqlQueryModel();
+	QString now = currDate.currentDate().toString();
+	qry->prepare("select * from ["+now+"]");
+	qry->exec();
+	qmd->setQuery(*qry);
+	ui.tableView->setModel(qmd);
+	trDb->closeDB();
+}

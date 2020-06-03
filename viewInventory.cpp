@@ -6,19 +6,7 @@ viewInventory::viewInventory(QWidget *parent)
 	ui.setupUi(this);
 	
 	backToMainMenu();
-	vinDB->connectDB();
-	vinQry->prepare("select * from Employee");
-	vinQry->exec();
-	vinMdl->setQuery(*vinQry);
-	ui.tableView->setModel(vinMdl);
-	ui.tableView->setWindowTitle("Inventory");
-	ui.tableView->setAlternatingRowColors(true);
-	comboQ->prepare("select name from sqlite_master where type = 'table' ");
-	comboQ->exec();
-	cmbmdl->setQuery(*comboQ);
-	ui.comboBox_2->setModel(cmbmdl);
-	vinDB->closeDB();
-
+	initDB();
 	//Actions and slots
 	QObject::connect(ui.pushButton_2, SIGNAL(clicked()), this, SLOT(searchData()));
 	QObject::connect(ui.pushButton_3, SIGNAL(clicked()), this, SLOT(selectTable()));
@@ -32,6 +20,22 @@ viewInventory::~viewInventory()
 void viewInventory::backToMainMenu()
 {
 	QObject::connect(ui.pushButton, SIGNAL(clicked()), this, SLOT(close()));
+}
+
+void viewInventory::initDB()
+{
+	vinDB->connectDB();
+	vinQry->prepare("select * from Employee");
+	vinQry->exec();
+	vinMdl->setQuery(*vinQry);
+	ui.tableView->setModel(vinMdl);
+	ui.tableView->setWindowTitle("Inventory");
+	ui.tableView->setAlternatingRowColors(true);
+	comboQ->prepare("select name from sqlite_master where type = 'table' ");
+	comboQ->exec();
+	cmbmdl->setQuery(*comboQ);
+	ui.comboBox_2->setModel(cmbmdl);
+	vinDB->closeDB();
 }
 
 void viewInventory::selectTable()

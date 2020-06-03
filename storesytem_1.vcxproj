@@ -94,6 +94,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AssertionDialog.cpp" />
     <ClCompile Include="DeliveryView.cpp" />
     <ClCompile Include="settingsAddUsersForm.cpp" />
     <ClCompile Include="SettingsWin.cpp" />
@@ -102,6 +103,7 @@
     <ClCompile Include="TransferView.cpp" />
     <ClCompile Include="viewInventory.cpp" />
     <QtRcc Include="mainpage.qrc" />
+    <QtUic Include="AssertionDialog.ui" />
     <QtUic Include="DBWindow.ui" />
     <QtUic Include="DeliveryView.ui" />
     <QtUic Include="main.ui" />
@@ -123,6 +125,7 @@
     <QtMoc Include="homepage.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="AssertionDialog.h" />
     <ClInclude Include="DataBase.h" />
     <QtMoc Include="TnDTransferSpreadSheet.h" />
     <QtMoc Include="DeliveryView.h" />

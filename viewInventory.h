@@ -12,6 +12,7 @@ public:
 	viewInventory(QWidget *parent = Q_NULLPTR);
 	~viewInventory();
 	void backToMainMenu();
+	void initDB();
 	
 public slots:
 	void searchData();
@@ -19,7 +20,7 @@ public slots:
 
 private:
 	Ui::viewInventory ui;
-	DataBase* vinDB = new DataBase("scripts/chin.sqlite");
+	DataBase* vinDB = new DataBase("scripts/chin.sqlite", "connA");
 	QSqlQuery* vinQry = new QSqlQuery(vinDB->zDB);
 	QSqlQueryModel* vinMdl = new QSqlQueryModel();
 	QSqlQuery* comboQ = new QSqlQuery(vinDB->zDB);

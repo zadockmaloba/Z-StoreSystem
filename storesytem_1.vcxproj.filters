@@ -60,6 +60,9 @@
     <QtUic Include="TnDTransferSpreadSheet.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="AssertionDialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -95,6 +98,9 @@
     <ClCompile Include="TnDTransferSpreadSheet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AssertionDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="mainpage.qrc" />
@@ -125,6 +131,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="TnDTransferSpreadSheet.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="AssertionDialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

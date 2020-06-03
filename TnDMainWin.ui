@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>777</width>
+    <width>820</width>
     <height>531</height>
    </rect>
   </property>
@@ -222,6 +222,26 @@ background-color: rgb(60, 121, 182);</string>
                    <string notr="true">background-color: rgb(141, 94, 0);
 background-color: rgb(60, 121, 182);</string>
                   </property>
+                  <item>
+                   <property name="text">
+                    <string>JKIA</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>PEPONI - BAR</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>PEPONI - KITCHEN</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>UN CAMPUS</string>
+                   </property>
+                  </item>
                  </widget>
                 </item>
                 <item row="5" column="0">

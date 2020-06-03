@@ -1,9 +1,9 @@
 #include "DataBase.h"
 
-DataBase::DataBase(char* path) 
+DataBase::DataBase(char* path, QString conName) : zDB(QSqlDatabase::addDatabase("QSQLITE", conName))
 {
 	//connectDB(path);
-	zDB = QSqlDatabase::addDatabase("QSQLITE");
+	//zDB = QSqlDatabase::addDatabase("QSQL");
 	zDB.setDatabaseName(path);
 }
 
