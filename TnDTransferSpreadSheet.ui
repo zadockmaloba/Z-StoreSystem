@@ -29,7 +29,7 @@ font: 9pt &quot;Microsoft YaHei UI&quot;;</string>
 background-color: rgb(60, 121, 182);</string>
          </property>
          <property name="text">
-          <string>PushButton</string>
+          <string>Export as PDF</string>
          </property>
         </widget>
        </item>
@@ -40,7 +40,7 @@ background-color: rgb(60, 121, 182);</string>
 background-color: rgb(60, 121, 182);</string>
          </property>
          <property name="text">
-          <string>PushButton</string>
+          <string>Export as Excell Sheet</string>
          </property>
         </widget>
        </item>

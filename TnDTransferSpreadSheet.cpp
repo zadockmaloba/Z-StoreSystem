@@ -18,6 +18,8 @@ void TnDTransferSpreadSheet::readData()
 	qry->prepare("select * from ["+now+"]");
 	qry->exec();
 	qmd->setQuery(*qry);
+	ui.pushButton->setText(now);
+	ui.tableView->setWindowTitle("Transfers");
 	ui.tableView->setModel(qmd);
 	trDb->closeDB();
 }

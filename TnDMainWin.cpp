@@ -4,6 +4,8 @@ TnDMainWin::TnDMainWin(QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
+	setItemTypes();
+	setItemNames();
 	//slots and activities
 	ui.pushButton_4->setDisabled(true);
 	QObject::connect(ui.pushButton, SIGNAL(clicked()), &transSheet, SLOT(show()));
@@ -18,7 +20,7 @@ TnDMainWin::TnDMainWin(QWidget *parent)
 
 TnDMainWin::~TnDMainWin()
 {
-	delete(nDB);
+	delete(xnDB);
 }
 
 int TnDMainWin::stringToInt(QString sNum)
@@ -29,16 +31,52 @@ int TnDMainWin::stringToInt(QString sNum)
 
 void TnDMainWin::createTable()
 {
-	nDB->connectDB();
-	QSqlQuery* qry = new QSqlQuery(nDB->zDB);
+	xnDB->connectDB();
+	QSqlQuery* qry = new QSqlQuery(xnDB->zDB);
 	QSqlQueryModel* qmd = new QSqlQueryModel();
 	QString now = currDate.currentDate().toString();
-	ui.pushButton->setText(now);
+	//ui.pushButton->setText(now);
 	qry->prepare("create table ["+ now +"] (Item, Amount, IssuedBy, Time, TransferredTo)");
-	qry->prepare("create table TEST (Item, Amount, IssuedBy, Time, TransferredTo)");
+	//qry->prepare("create table TEST (Item, Amount, IssuedBy, Time, TransferredTo)");
 	qry->exec();
-	nDB->zDB.commit();
-	nDB->closeDB();
+	xnDB->zDB.commit();
+	xnDB->closeDB();
+}
+
+void TnDMainWin::setItemTypes()
+{
+	xvinDB->connectDB();
+	QSqlQuery* qry = new QSqlQuery(xvinDB->zDB);
+	QSqlQueryModel* qmd = new QSqlQueryModel();
+	qry->prepare("select name from sqlite_master where type = 'table' ");
+	qry->exec();
+	qmd->setQuery(*qry);
+	ui.comboBox->setModel(qmd);
+	xvinDB->closeDB();
+}
+
+void TnDMainWin::setItemNames()
+{ 
+	xvinDB->connectDB();
+	QSqlQuery* qry = new QSqlQuery(xvinDB->zDB);
+	QSqlQueryModel* qmd = new QSqlQueryModel();
+	QString currText = ui.comboBox->currentText();
+	qry->prepare("select [Item Name] from "+currText);
+	qry->exec();
+	qmd->setQuery(*qry);
+	ui.comboBox_2->setModel(qmd); 
+	xvinDB->closeDB(); 
+}
+
+void TnDMainWin::subtractStock(QString itm, QString tbl, int quantity)
+{
+	//subtracting items from the test.db; the function will be placed in getFormInput()
+
+	// Move some functions to TnDTransferSpreadsheet class such that it returns a model
+}
+
+void TnDMainWin::addStock(QString itm, QString tbl, int quantity)
+{
 }
 
 void TnDMainWin::startDay()
@@ -51,13 +89,15 @@ void TnDMainWin::startDay()
 void TnDMainWin::endDay()
 {
 	srt.show();
-	//********************************************************
+	//*********************************************************
 	//Remember to create a table for openning and closing times
 	//*********************************************************
-	nDB->zDB.commit();
+	xnDB->connectDB();
+	xnDB->zDB.commit();
 	srt.ui.label->setText("Ending the day will lead to the databse table being locked.\nNo more changes can be made to it.");
 	ui.pushButton_4->setDisabled(true);
 	ui.pushButton_3->setEnabled(true);
+	xnDB->closeDB();
 }
 
 void TnDMainWin::getFormInput()
@@ -68,8 +108,8 @@ void TnDMainWin::getFormInput()
 	uint amnt = ui.lineEdit_4->text().toInt();
 	QString now = currDate.currentDate().toString();
 	QString nTime = currTime.currentTime().toString();
-	nDB->connectDB();
-	QSqlQuery* qry = new QSqlQuery(nDB->zDB);
+	xnDB->connectDB();
+	QSqlQuery* qry = new QSqlQuery(xnDB->zDB);
 	QSqlQueryModel* qmd = new QSqlQueryModel();
 	qry->prepare("insert into ["+ now +"] (Item, Amount, IssuedBy, Time, TransferredTo) values (?,?,?,?,?)");
 	qry->bindValue(0, itmName);
@@ -78,8 +118,8 @@ void TnDMainWin::getFormInput()
 	qry->bindValue(3, nTime);
 	qry->bindValue(4, trnsfTO);
 	qry->exec();
-	nDB->zDB.commit();
-	nDB->closeDB();
+	xnDB->zDB.commit();
+	xnDB->closeDB();
 }
 
 void TnDMainWin::showTransferWin()

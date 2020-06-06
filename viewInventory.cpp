@@ -25,7 +25,7 @@ void viewInventory::backToMainMenu()
 void viewInventory::initDB()
 {
 	vinDB->connectDB();
-	vinQry->prepare("select * from Employee");
+	vinQry->prepare("select * from sqlite_master");
 	vinQry->exec();
 	vinMdl->setQuery(*vinQry);
 	ui.tableView->setModel(vinMdl);
@@ -60,8 +60,9 @@ void viewInventory::searchData()
 	if (vinDB->zDB.isOpen()) qDebug() << ("DB is Connected");
 	QSqlQuery* searchQuery = new QSqlQuery(vinDB->zDB);
 	if (searchQ == "")searchQuery->prepare("select * from "+cmbTxt);
-	else { searchQuery->prepare("select * from "+ cmbTxt +" where FirstName = :nm "); 
-	searchQuery->bindValue(":nm", searchQ);
+	else { 
+		searchQuery->prepare("select * from "+ cmbTxt +" where [Item Name] LIKE '%"+searchQ+"%' "); 
+		searchQuery->bindValue(":nm", searchQ);
 	}
 	searchQuery->exec();
 	QSqlQueryModel* schmdl = new QSqlQueryModel();

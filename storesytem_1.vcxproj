@@ -98,6 +98,7 @@
     <ClCompile Include="DeliveryView.cpp" />
     <ClCompile Include="settingsAddUsersForm.cpp" />
     <ClCompile Include="SettingsWin.cpp" />
+    <ClCompile Include="tndDataBase.cpp" />
     <ClCompile Include="TnDMainWin.cpp" />
     <ClCompile Include="TnDTransferSpreadSheet.cpp" />
     <ClCompile Include="TransferView.cpp" />
@@ -125,6 +126,7 @@
     <QtMoc Include="homepage.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="tndDataBase.h" />
     <QtMoc Include="AssertionDialog.h" />
     <ClInclude Include="DataBase.h" />
     <QtMoc Include="TnDTransferSpreadSheet.h" />

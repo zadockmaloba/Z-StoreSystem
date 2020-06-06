@@ -101,6 +101,9 @@
     <ClCompile Include="AssertionDialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="tndDataBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="mainpage.qrc" />
@@ -134,6 +137,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="AssertionDialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="tndDataBase.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

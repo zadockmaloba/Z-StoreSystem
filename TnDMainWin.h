@@ -1,11 +1,13 @@
 #pragma once
 
 #include <QWidget>
+#include <QtCore/qthread.h>
 #include "ui_TnDMainWin.h"
 #include "TransferView.h"
 #include "TnDTransferSpreadSheet.h"
 #include "AssertionDialog.h"
 #include "DataBase.h"
+#include "ViewInventory.h"
 
 class TnDMainWin : public QWidget
 {
@@ -16,6 +18,10 @@ public:
 	~TnDMainWin();
 	int stringToInt(QString sNum);
 	void createTable();
+	void setItemTypes();
+	void setItemNames();
+	void subtractStock(QString itm, QString tbl, int quantity);
+	void addStock(QString itm, QString tbl, int quantity);
 
 public slots:
 	void showTransferWin();
@@ -28,7 +34,9 @@ private:
 	TransferView trView;
 	TnDTransferSpreadSheet transSheet;
 	AssertionDialog srt;
-	DataBase* nDB = new DataBase("scripts/stockmvmnt.db", "connB");
+	DataBase* xnDB = new DataBase("scripts/stockmvmnt.db", "connE");
+	DataBase* xvinDB = new DataBase("scripts/test.db", "connE");
 	QDate currDate;
 	QTime currTime;
+	//viewInventory xvin;
 };
