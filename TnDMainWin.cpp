@@ -15,6 +15,7 @@ TnDMainWin::TnDMainWin(QWidget *parent)
 	QObject::connect(srt.ui.pushButton, SIGNAL(clicked()), &srt, SLOT(close()));
 	QObject::connect(ui.pushButton_6, SIGNAL(clicked()), this, SLOT(getFormInput()));
 	QObject::connect(ui.pushButton_6, SIGNAL(clicked()), &transSheet, SLOT(readData()));
+	QObject::connect(ui.pushButton_7, SIGNAL(clicked()), this, SLOT(setItemNames()));
 
 }
 
@@ -36,7 +37,7 @@ void TnDMainWin::createTable()
 	QSqlQueryModel* qmd = new QSqlQueryModel();
 	QString now = currDate.currentDate().toString();
 	//ui.pushButton->setText(now);
-	qry->prepare("create table ["+ now +"] (Item, Amount, IssuedBy, Time, TransferredTo)");
+	qry->prepare("create table ["+ now +"] (Item, Amount, IssuedBy, Time, TransferredTo, RemainingStock)");
 	//qry->prepare("create table TEST (Item, Amount, IssuedBy, Time, TransferredTo)");
 	qry->exec();
 	xnDB->zDB.commit();
@@ -45,27 +46,13 @@ void TnDMainWin::createTable()
 
 void TnDMainWin::setItemTypes()
 {
-	xvinDB->connectDB();
-	QSqlQuery* qry = new QSqlQuery(xvinDB->zDB);
-	QSqlQueryModel* qmd = new QSqlQueryModel();
-	qry->prepare("select name from sqlite_master where type = 'table' ");
-	qry->exec();
-	qmd->setQuery(*qry);
-	ui.comboBox->setModel(qmd);
-	xvinDB->closeDB();
+	ztnDB.setItemTypes(ui.comboBox);
 }
 
 void TnDMainWin::setItemNames()
 { 
-	xvinDB->connectDB();
-	QSqlQuery* qry = new QSqlQuery(xvinDB->zDB);
-	QSqlQueryModel* qmd = new QSqlQueryModel();
-	QString currText = ui.comboBox->currentText();
-	qry->prepare("select [Item Name] from "+currText);
-	qry->exec();
-	qmd->setQuery(*qry);
-	ui.comboBox_2->setModel(qmd); 
-	xvinDB->closeDB(); 
+	QString ntbl = ui.comboBox->currentText();
+	ztnDB.setItemNames(ui.comboBox_2, ui.comboBox->currentText());
 }
 
 void TnDMainWin::subtractStock(QString itm, QString tbl, int quantity)

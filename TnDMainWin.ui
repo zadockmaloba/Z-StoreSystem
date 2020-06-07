@@ -190,7 +190,7 @@ background-color: rgb(60, 121, 182);</string>
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="0">
+                <item row="3" column="0">
                  <widget class="QLineEdit" name="lineEdit">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -203,14 +203,14 @@ background-color: rgb(60, 121, 182);</string>
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="0">
+                <item row="4" column="0">
                  <widget class="QLabel" name="label_3">
                   <property name="text">
                    <string>Transferred to :</string>
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="1">
+                <item row="4" column="1">
                  <widget class="QComboBox" name="comboBox_3">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -244,14 +244,14 @@ background-color: rgb(60, 121, 182);</string>
                   </item>
                  </widget>
                 </item>
-                <item row="5" column="0">
+                <item row="6" column="0">
                  <widget class="QLabel" name="label_4">
                   <property name="text">
                    <string>Units : </string>
                   </property>
                  </widget>
                 </item>
-                <item row="5" column="1">
+                <item row="6" column="1">
                  <widget class="QLineEdit" name="lineEdit_2">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -276,27 +276,27 @@ background-color: rgb(60, 121, 182);</string>
                   </property>
                  </widget>
                 </item>
-                <item row="6" column="0">
+                <item row="7" column="0">
                  <widget class="QLabel" name="label_5">
                   <property name="text">
                    <string>Quantity Transferred</string>
                   </property>
                  </widget>
                 </item>
-                <item row="6" column="1">
+                <item row="7" column="1">
                  <widget class="QLineEdit" name="lineEdit_4"/>
                 </item>
-                <item row="7" column="0">
+                <item row="8" column="0">
                  <widget class="QLabel" name="label_6">
                   <property name="text">
                    <string>Issued By </string>
                   </property>
                  </widget>
                 </item>
-                <item row="7" column="1">
+                <item row="8" column="1">
                  <widget class="QLineEdit" name="lineEdit_3"/>
                 </item>
-                <item row="8" column="1">
+                <item row="9" column="1">
                  <spacer name="verticalSpacer_2">
                   <property name="orientation">
                    <enum>Qt::Vertical</enum>
@@ -309,7 +309,7 @@ background-color: rgb(60, 121, 182);</string>
                   </property>
                  </spacer>
                 </item>
-                <item row="9" column="1">
+                <item row="10" column="1">
                  <widget class="QPushButton" name="pushButton_6">
                   <property name="styleSheet">
                    <string notr="true">background-color: rgb(141, 94, 0);
@@ -317,6 +317,16 @@ background-color: rgb(60, 121, 182);</string>
                   </property>
                   <property name="text">
                    <string>Issue Transfer</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QPushButton" name="pushButton_7">
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(145, 145, 145);</string>
+                  </property>
+                  <property name="text">
+                   <string>Refresh</string>
                   </property>
                  </widget>
                 </item>

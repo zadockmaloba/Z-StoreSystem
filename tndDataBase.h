@@ -1,5 +1,7 @@
 #pragma once
 #include <QtCore/qobject.h>
+#include <QtWidgets/qwidget.h>
+#include <QtWidgets/qcombobox.h>
 #include "DataBase.h"
 
 class tndDataBase : public QObject
@@ -8,12 +10,14 @@ class tndDataBase : public QObject
 public: //public methods
 	tndDataBase ();
 	~tndDataBase ();
-	QSqlQueryModel setItemTypes();
-	QSqlQueryModel setItemNames();
+	void setItemTypes(QComboBox* widg);
+	void setItemNames(QComboBox* widg ,QString currTable);
+	int getRemainingStock(QString table, QString itmName);
 
 public: //Public members
-	DataBase* tnDB = new DataBase("test.db", "connG");
+	DataBase* tnDB = new DataBase("scripts/test.db", "connG");
 
 private:
+	QSqlQueryModel clmd;
 
 };

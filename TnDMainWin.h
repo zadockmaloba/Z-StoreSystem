@@ -8,6 +8,7 @@
 #include "AssertionDialog.h"
 #include "DataBase.h"
 #include "ViewInventory.h"
+#include "tndDataBase.h"
 
 class TnDMainWin : public QWidget
 {
@@ -19,7 +20,6 @@ public:
 	int stringToInt(QString sNum);
 	void createTable();
 	void setItemTypes();
-	void setItemNames();
 	void subtractStock(QString itm, QString tbl, int quantity);
 	void addStock(QString itm, QString tbl, int quantity);
 
@@ -28,14 +28,16 @@ public slots:
 	void startDay();
 	void endDay();
 	void getFormInput();
+	void setItemNames();
 
 private:
 	Ui::TnDMainWin ui;
 	TransferView trView;
 	TnDTransferSpreadSheet transSheet;
 	AssertionDialog srt;
+	tndDataBase ztnDB;
 	DataBase* xnDB = new DataBase("scripts/stockmvmnt.db", "connE");
-	DataBase* xvinDB = new DataBase("scripts/test.db", "connE");
+	//DataBase* xvinDB = new DataBase("scripts/test.db", "connE");
 	QDate currDate;
 	QTime currTime;
 	//viewInventory xvin;
