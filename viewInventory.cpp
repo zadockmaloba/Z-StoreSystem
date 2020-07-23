@@ -15,6 +15,10 @@ viewInventory::viewInventory(QWidget *parent)
 viewInventory::~viewInventory()
 {
 	delete(vinDB);
+	delete(vinQry);
+	delete(vinMdl);
+	delete(comboQ);
+	delete(cmbmdl);
 }
 
 void viewInventory::backToMainMenu()

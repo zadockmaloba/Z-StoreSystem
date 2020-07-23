@@ -7,6 +7,7 @@
 #include <QtCore/qdebug.h>
 #include <string>
 #include <QtCore/qdatetime.h>
+#include <QtSql/qsqlerror.h>
 
 class DataBase 
 {
@@ -23,5 +24,6 @@ public:
 	QSqlQueryModel* mdl = new QSqlQueryModel();
 
 private:
+	QString connection;
 	//sqlite3* DB;
 };

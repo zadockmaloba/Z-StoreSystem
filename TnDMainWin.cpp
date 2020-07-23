@@ -37,9 +37,11 @@ void TnDMainWin::createTable()
 	QSqlQueryModel* qmd = new QSqlQueryModel();
 	QString now = currDate.currentDate().toString();
 	//ui.pushButton->setText(now);
-	qry->prepare("create table ["+ now +"] (Item, Amount, IssuedBy, Time, TransferredTo, RemainingStock)");
-	//qry->prepare("create table TEST (Item, Amount, IssuedBy, Time, TransferredTo)");
-	qry->exec();
+	qry->prepare("create if not exists table ["+ now +"] (Item, Amount, IssuedBy, Time, TransferredTo, RemainingStock)");
+	if (!qry->exec()) {
+		QSqlError err(qry->lastError());
+		qDebug() << err;
+	}
 	xnDB->zDB.commit();
 	xnDB->closeDB();
 }

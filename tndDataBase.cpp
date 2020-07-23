@@ -14,7 +14,10 @@ void tndDataBase::setItemTypes(QComboBox * widg)
 	QSqlQuery* qry = new QSqlQuery(tnDB->zDB);
 	QSqlQueryModel* qmd = new QSqlQueryModel();
 	qry->prepare("select name from sqlite_master where type = 'table' ");
-	qry->exec();
+	if (!qry->exec()) {
+		QSqlError err = qry->lastError();
+		qDebug() << err;
+	}
 	qmd->setQuery(*qry);
 	widg->setModel(qmd);
 	tnDB->closeDB();
@@ -26,7 +29,10 @@ void tndDataBase::setItemNames(QComboBox* widg ,QString currTable)
 	QSqlQuery* qry = new QSqlQuery(tnDB->zDB);
 	QSqlQueryModel* qmd = new QSqlQueryModel();
 	qry->prepare("select [Item Name] from " + currTable);
-	qry->exec();
+	if (!qry->exec()) {
+		QSqlError err=qry->lastError();
+		qDebug() << err;
+	}
 	qmd->setQuery(*qry);
 	widg->setModel(qmd);
 	tnDB->closeDB();
@@ -40,7 +46,10 @@ int tndDataBase::getRemainingStock(QString table, QString itmName)
 	QSqlQueryModel* qmd = new QSqlQueryModel();
 	qry->prepare("select [Stock] from [ " + table + " ] where [Item Name] = ?");
 	qry->addBindValue(itmName);
-	qry->exec();
+	if (!qry->exec()) {
+		QSqlError err = qry->lastError();
+		qDebug() << err;
+	}
 	n = qry->value(1).toInt();
 	//qmd->setQuery(*qry);
 	//qmd->it
